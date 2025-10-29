@@ -188,10 +188,11 @@ pickle.dump(pipeline, open("models/sentiment_model.pkl", "wb"))
 **Metrics Computed:**
 
 | Metric	| Description |
-|Average Sentiment Score|	Converts polarity to numeric values (-1, 0, +1).|
-|Engagement Rate|	(Likes + Comments + Shares) / Followers.|
-|Positive Engagement Ratio|	% of positive posts with above-average engagement.|
-|Platform/Time Trends	|Sentiment and engagement trends over time.|
+|-----------|------------------|
+| Average Sentiment Score       |Converts polarity to numeric values (-1, 0, +1).|
+| Engagement Rate               |`(Likes + Comments + Shares) / Followers.`|
+| Positive Engagement Ratio     |`% of positive posts with above-average engagement.`|
+| Platform/Time Trends          |Sentiment and engagement trends over time.|
 
 **Process:**
 
