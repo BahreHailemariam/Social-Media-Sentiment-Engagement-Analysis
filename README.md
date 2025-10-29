@@ -238,7 +238,30 @@ DIVIDE(
 
 ```
 6️⃣ **Automation:** Daily ETL refresh and alert generation.
+**Goal:** Keep the dashboard updated automatically.
 
+**Tools:**
+
+- Python + Task Scheduler / Airflow / Cron for daily ETL refresh.
+
+- Power BI Service for data refresh & alerts.
+
+**Workflow Automation:**
+
+1. Daily job pulls new data via API or CSV upload.
+
+2. Data cleaning + sentiment prediction.
+
+3. Aggregated results saved to shared data source.
+
+4. Power BI refreshes automatically.
+
+5. Email/Teams alert triggers if negative sentiment exceeds threshold.
+
+**Example Cron Job (Linux):**
+```bash
+0 8 * * * /usr/bin/python3 /project/scripts/sentiment_model.py >> /logs/etl_log.txt 2>&1
+```
 ---
 
 ## 🧠 Python Code Examples
