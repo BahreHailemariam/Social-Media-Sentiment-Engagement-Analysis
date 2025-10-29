@@ -112,6 +112,32 @@ Without real-time insights, it’s difficult to:
 
 Example Script:
 ```python
+import pandas as pd
+
+# Load sample CSV
+df = pd.read_csv("data/sample_posts.csv")
+print(df.head())
+
+
+```
+2️⃣ **Data Cleaning:** Remove noise, emojis, and irrelevant symbols. 
+**Goal:** Prepare raw text for sentiment classification.
+
+**Steps:**
+
+- Remove URLs, hashtags, mentions (@user), emojis, and special symbols.
+
+- Convert text to lowercase.
+
+- Tokenize words and optionally remove stopwords.
+
+- Handle missing or duplicate posts.
+
+- Keep engagement metrics (likes, shares, etc.) for later aggregation.
+
+Example Script:
+`scripts/preprocess.py`
+```python
 import re
 import pandas as pd
 
@@ -125,7 +151,8 @@ df["clean_text"] = df["text"].apply(clean_text)
 print(df.head())
 
 ```
-2️⃣ **Data Cleaning:** Remove noise, emojis, and irrelevant symbols.  
+
+
 3️⃣ **Sentiment Analysis:** Apply NLP models to classify polarity.  
 4️⃣ **Aggregation:** Combine engagement and sentiment into metrics tables.  
 5️⃣ **Visualization:** Power BI dashboard for KPIs and insights.  
