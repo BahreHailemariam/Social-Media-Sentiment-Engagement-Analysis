@@ -201,6 +201,13 @@ pickle.dump(pipeline, open("models/sentiment_model.pkl", "wb"))
 
 **Example Code:** <br />
 ```python
+df["sentiment_score"] = df["predicted_label"].map({"negative": -1, "neutral": 0, "positive": 1})
+agg_df = df.groupby("date").agg({
+    "sentiment_score": "mean",
+    "likes": "sum",
+    "shares": "sum"
+}).reset_index()
+agg_df.to_csv("data/aggregated_metrics.csv", index=False)
 
 ```
 5️⃣ **Visualization:** Power BI dashboard for KPIs and insights.  
