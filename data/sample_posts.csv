@@ -1,0 +1,11 @@
+post_id,text,date,platform,likes,comments,shares,label
+1,I love the new features! Great job team 🙌,2025-10-01,Twitter,120,10,15,positive
+2,Really disappointed with the latest update. App keeps crashing.,2025-10-02,Twitter,5,8,1,negative
+3,"The product is okay, nothing special.",2025-10-03,Instagram,30,2,0,neutral
+4,Amazing customer service — they resolved my issue fast!,2025-10-04,Facebook,80,5,7,positive
+5,Shipping was delayed and support didn't help. Not happy.,2025-10-05,Twitter,3,6,0,negative
+6,Nice packaging and fast delivery.,2025-10-06,Instagram,45,3,2,positive
+7,I wish there were more payment options.,2025-10-07,Facebook,7,1,0,neutral
+8,"Terrible experience, product broke after one week.",2025-10-08,Twitter,2,9,1,negative
+9,Love the design and user experience!,2025-10-09,Instagram,150,20,25,positive
+10,"It's fine, but could be improved in many ways.",2025-10-10,Facebook,12,2,1,neutral
