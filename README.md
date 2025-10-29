@@ -110,7 +110,8 @@ Without real-time insights, it’s difficult to:
 - Normalize field names and structure into a unified format.
 - Save to the `/data/` folder as a daily batch (e.g., `social_posts_YYYYMMDD.csv`).
 
-Example Script:
+Example Script:<br />
+`scripts/load_data.py`
 ```python
 import pandas as pd
 
@@ -125,17 +126,13 @@ print(df.head())
 
 **Steps:**
 
-- Remove URLs, hashtags, mentions (@user), emojis, and special symbols.
-
+- Remove URLs, hashtags, mentions (`@user`), emojis, and special symbols.
 - Convert text to lowercase.
-
 - Tokenize words and optionally remove stopwords.
-
 - Handle missing or duplicate posts.
-
 - Keep engagement metrics (likes, shares, etc.) for later aggregation.
 
-Example Script:
+Example Script:<br />
 `scripts/preprocess.py`
 ```python
 import re
@@ -154,6 +151,37 @@ print(df.head())
 
 
 3️⃣ **Sentiment Analysis:** Apply NLP models to classify polarity.  
+**Goal:** Determine the polarity (Positive, Neutral, Negative) of each post.
+
+**Model Used:**
+
+- **TF-IDF Vectorizer + Logistic Regression** classifier (via scikit-learn).
+- Trained on labeled data to classify sentiment polarity.
+
+**Pipeline Steps:**
+
+- Vectorize text using TF-IDF.
+- Train/test split for model validation.
+- Save trained model to `/models/sentiment_model.pkl`.
+- Predict new posts daily and append results.
+
+Example Script:<br />
+`scripts/sentiment_model.py`
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+import pickle
+
+pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer(ngram_range=(1,2), max_features=2000)),
+    ('clf', LogisticRegression(max_iter=1000))
+])
+
+pipeline.fit(X_train, y_train)
+pickle.dump(pipeline, open("models/sentiment_model.pkl", "wb"))
+
+```
 4️⃣ **Aggregation:** Combine engagement and sentiment into metrics tables.  
 5️⃣ **Visualization:** Power BI dashboard for KPIs and insights.  
 6️⃣ **Automation:** Daily ETL refresh and alert generation.
