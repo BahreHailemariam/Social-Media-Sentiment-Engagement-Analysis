@@ -211,6 +211,32 @@ agg_df.to_csv("data/aggregated_metrics.csv", index=False)
 
 ```
 5️⃣ **Visualization:** Power BI dashboard for KPIs and insights.  
+**Goal:** Display insights interactively for business decisions.
+
+**Power BI KPIs:**
+
+🔵 Sentiment distribution (Positive / Neutral / Negative)
+
+📈 Engagement over time (likes, shares, comments)
+
+🗺️ Top-performing hashtags or topics
+
+🔔 Negative sentiment alerts or spikes
+
+📊 Sentiment vs Engagement heatmap
+
+**Dashboard Specification:**
+Located in `dashboard/PowerBI_Report_Spec.md`
+
+**DAX Example:**
+```DAX
+PositiveSentimentRate = 
+DIVIDE(
+    COUNTROWS(FILTER(Posts, Posts[Sentiment] = "positive")),
+    COUNTROWS(Posts)
+)
+
+```
 6️⃣ **Automation:** Daily ETL refresh and alert generation.
 
 ---
