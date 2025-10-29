@@ -239,6 +239,25 @@ IF(
     "✅ Normal"
 )
 ```
+📂 Project structure
+```
+kotlin 
+social-media-sentiment-analysis/
+├── data/
+│   └── sample_posts.csv
+├── scripts/
+│   ├── load_data.py
+│   ├── preprocess.py
+│   ├── sentiment_model.py
+│   ├── visualize.py
+├── notebooks/
+│   └── Sentiment_Analysis_Exploration.ipynb
+├── dashboard/
+│   └── PowerBI_Report_Spec.md
+├── models/
+│   └── sentiment_model.pkl
+└── README.md
+```
 
 ---
 
