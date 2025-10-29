@@ -98,12 +98,38 @@ Without real-time insights, it’s difficult to:
 
 ## 🔁 Workflow
 
-1. **Data Extraction:** Pull social media posts, comments, and engagement stats.  
-2. **Data Cleaning:** Remove noise, emojis, and irrelevant symbols.  
-3. **Sentiment Analysis:** Apply NLP models to classify polarity.  
-4. **Aggregation:** Combine engagement and sentiment into metrics tables.  
-5. **Visualization:** Power BI dashboard for KPIs and insights.  
-6. **Automation:** Daily ETL refresh and alert generation.
+1️⃣ **Data Extraction:** Pull social media posts, comments, and engagement stats.<br />
+**Goal:** Collect social media posts, comments, and engagement metrics (likes, shares, retweets, etc.).<br />
+**Sources:**
+- CSV or API feeds from platforms like X (Twitter), Instagram, or YouTube.
+- For production: APIs such as **Tweepy (X), Meta Graph API (Facebook/Instagram)**, or **YouTube Data API**.
+- For demo: A **sample_posts.csv** dataset stored locally in the `data/` folder.
+
+**Process:**
+- Fetch text posts, timestamps, author, and engagement metrics.
+- Normalize field names and structure into a unified format.
+- Save to the `/data/` folder as a daily batch (e.g., `social_posts_YYYYMMDD.csv`).
+
+Example Script:
+```python
+import re
+import pandas as pd
+
+def clean_text(text):
+    text = re.sub(r"http\S+|@\S+|#\S+", "", text)
+    text = re.sub(r"[^A-Za-z0-9\s]", "", text)
+    return text.lower().strip()
+
+df = pd.read_csv("data/sample_posts.csv")
+df["clean_text"] = df["text"].apply(clean_text)
+print(df.head())
+
+```
+2️⃣ **Data Cleaning:** Remove noise, emojis, and irrelevant symbols.  
+3️⃣ **Sentiment Analysis:** Apply NLP models to classify polarity.  
+4️⃣ **Aggregation:** Combine engagement and sentiment into metrics tables.  
+5️⃣ **Visualization:** Power BI dashboard for KPIs and insights.  
+6️⃣ **Automation:** Daily ETL refresh and alert generation.
 
 ---
 
